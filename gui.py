@@ -33,7 +33,7 @@ def main():
     but.move(64,64)
 
     
-    wid.setGeometry(100,100,320,200)
+    wid.setGeometry(100,60,1000,800)
     wid.show()
 
     def my_callback(channel):
