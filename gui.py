@@ -18,8 +18,6 @@ def init():
     # self.setFixedHeight(1000)
     # self.setFixedWidth(450)
     wid = QWidget
-    wid.setGeometry(100,100,300,300)
-    wid.show()
     
     #LED Light setup
     led = QPushButton(wid)
@@ -34,7 +32,8 @@ def init():
     but.move(64,64)
 
     
-
+    wid.setGeometry(50,50,320,200)
+    wid.show()
 
     def my_callback(channel):
         if but.isChecked():
