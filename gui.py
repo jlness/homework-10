@@ -1,9 +1,13 @@
+from buttons import led_off, led_on
 import sys
 import time
-#import RPi.GPIO as GPIO
 
-from PyQt5.QtWidgets import (QApplication, QHBoxLayout, QMainWindow, QLabel, QPushButton, QVBoxLayout, QWidget)
+
+from PyQt5.QtWidgets import (QApplication, QHBoxLayout, QMainWindow, QLabel, QPushButton, QVBoxLayout, QWidget, QRadioButton)
 from PyQt5.QtCore import Qt
+from PyQt5.QtGui import QIcon
+from PyQt5.QtCore import pyqtSlot
+import RPi.GPIO as GPIO
 
 # GPIO.setmode(GPIO.BCM)
 # pin = 18
@@ -13,44 +17,44 @@ class Main(QMainWindow):
   def init(self):
     #initialize
     super().init()
+
     self.setFixedHeight(1000)
     self.setFixedWidth(450)
     
-    # Press and indicator text
-    press = QLabel("Press button to turn the LED light on")
-    self.button = QPushButton("Light")
-    self.indicator = QLabel("Not Connected")
+    #LED Light setup
+    wid = QWidget
+    led = QPushButton(wid)
+    led.setText("LED")
+    led.pressed.connect(led_on)
+    led.released.connect(led_off)
+
+    #Button Setup
+    but = QRadioButton(wid)
+    but.setText("button")
+
+    wid.setGeometry(100,100,300,300)
+    wid.show()
+
     
-    A = QWidget()
-    H = QHBoxLayout()
-    V = QVBoxLayout()
-    
-    
-    H.addWidget(self.button)
-    H.addWidget(self.indicator)
-    V.addWidget(press)
-    V.addWidget(H)
-    A.setLayout(V)
-    self.setCentralWidget(A)
-    self.button.clicked.connect(self.light_LED)
-    self.i = True
 
 
+    def my_callback(channel):
+        if but.isChecked():
+            but.setChecked(False)
+        else: but.setChecked(True)
 
-#   def my_callback(self):
-#     self.indicator.setText("Connected")
-#   def light_LED(self):
-#     if self.i == True:
-#       GPIO.output(pin, GPIO.LOW)
-#       self.indicator.setText("Not Connected")
-#       self.i = True
-#       return
+    GPIO.add_event_detect(17, GPIO.BOTH)
+    GPIO.add_event_callback(17, my_callback)
 
+    sys.exit(app.exec_())
 
 
 
 if __name__ == '__main__':
-  st = QApplication(sys.argv)
-  win = Main()
-  win.show()
-  st.exec_()
+    GPIO.setmode(GPIO.BCM)
+    GPIO.setup(18, GPIO.OUT)
+    GPIO.setup(17, GPIO.IN)
+    st = QApplication(sys.argv)
+    win = Main()
+    win.show()
+    st.exec_()
