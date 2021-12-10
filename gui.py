@@ -1,6 +1,6 @@
 import sys
 import time
-import Rpi.GPIO as GPIO
+import RPi.GPIO as GPIO
 
 from PyQt5.QtWidgets import (QApplication, QHBoxLayout, QMainWindow, QLabel, QPushButton, QVBoxLayout, QWidget)
 from PyQt5.QtCore import Qt
