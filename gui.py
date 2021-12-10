@@ -12,11 +12,11 @@ import RPi.GPIO as GPIO
 # pin = 18
 # GPIO.setup(pin, GPIO.OUT)
 
-def init(self):
+def init():
 #initialize
 
-    self.setFixedHeight(1000)
-    self.setFixedWidth(450)
+    # self.setFixedHeight(1000)
+    # self.setFixedWidth(450)
     wid = QWidget
     wid.setGeometry(100,100,300,300)
     wid.show()
@@ -43,6 +43,18 @@ def init(self):
 
     GPIO.add_event_detect(17, GPIO.BOTH)
     GPIO.add_event_callback(17, my_callback)
+
+    #Some Trial and Error work I was doing, did not work out
+
+
+    # text = QLabel("Press to light LED")
+    # HB = QHBoxLayout()
+    # HB.addWidget(self.button)
+    # HB.indicator = QLabel("disconnected")
+
+    # VB = QVBoxLayout()
+    # VB.addwidget(text)
+    # VB.addLayout(HB)
 
 def led_on():
    print("Led On")
