@@ -18,7 +18,13 @@ def window():
    button2.setText("Button2")
    button2.move(64,64)
    
-
+   def my_callback(channel):
+       if button2.isChecked():
+           button2.setChecked(False)
+       else: button2.setChecked(True)
+    
+   GPIO.add_event_detect(17, GPIO.BOTH)
+   GPIO.add_event_callback(17, my_callback)
 
    widget.setGeometry(50,50,320,200)
    widget.setWindowTitle("PyQt5 Button Click Example")
@@ -32,7 +38,7 @@ def led_on():
 def led_off():
    print("Led Off")   
    GPIO.output(18, GPIO.LOW)
-   
+
 if __name__ == '__main__':
     GPIO.setmode(GPIO.BCM)
     GPIO.setup(18, GPIO.OUT)
