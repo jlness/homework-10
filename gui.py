@@ -22,22 +22,22 @@ def main():
     
     #LED Light setup
     led = QPushButton(wid)
-    led.setText("LED")
-    led.move(64,32)
+    led.setText("Press to turn the LED light on, release to turn off")
+    led.move(128,32)
     led.pressed.connect(led_on)
     led.released.connect(led_off)
 
     #Button Setup
     but = QRadioButton(wid)
-    but.setText("button")
-    but.move(64,64)
+    but.setText("Filled if circuit is complete")
+    but.move(128,128)
 
     
     wid.setGeometry(100,60,1000,800)
     wid.show()
 
     def my_callback(channel):
-        if but.isChecked():
+        if but.isChecked() == True:
             but.setChecked(False)
         else: but.setChecked(True)
 
@@ -58,12 +58,10 @@ def main():
 
     sys.exit(st.exec_())
 
-def led_on():
-   print("Led On")
-   GPIO.output(18, GPIO.HIGH)
-def led_off():
-   print("Led Off")   
-   GPIO.output(18, GPIO.LOW)
+# def led_on():
+#    GPIO.output(18, GPIO.HIGH)
+# def led_off():  
+#    GPIO.output(18, GPIO.LOW)
 
 
 
