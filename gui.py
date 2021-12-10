@@ -18,6 +18,7 @@ def main():
     # self.setFixedHeight(1000)
     # self.setFixedWidth(450)
     wid = QWidget()
+    st = QApplication(sys.argv)
     
     #LED Light setup
     led = QPushButton(wid)
@@ -55,6 +56,8 @@ def main():
     # VB.addwidget(text)
     # VB.addLayout(HB)
 
+    sys.exit(st.exec_())
+
 def led_on():
    print("Led On")
    GPIO.output(18, GPIO.HIGH)
@@ -68,6 +71,5 @@ if __name__ == '__main__':
     GPIO.setmode(GPIO.BCM)
     GPIO.setup(18, GPIO.OUT)
     GPIO.setup(17, GPIO.IN)
-    st = QApplication(sys.argv)
     main()
     # sys.exit(st.exec_())
