@@ -32,7 +32,7 @@ def main():
     but.move(64,64)
 
     
-    wid.setGeometry(50,50,320,200)
+    wid.setGeometry(100,100,320,200)
     wid.show()
 
     def my_callback(channel):
@@ -70,4 +70,4 @@ if __name__ == '__main__':
     GPIO.setup(17, GPIO.IN)
     st = QApplication(sys.argv)
     main()
-    sys.exit(st.exec_())
+    # sys.exit(st.exec_())
