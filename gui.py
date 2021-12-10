@@ -1,4 +1,3 @@
-from buttons import led_off, led_on
 import sys
 import time
 
@@ -13,27 +12,26 @@ import RPi.GPIO as GPIO
 # pin = 18
 # GPIO.setup(pin, GPIO.OUT)
 
-class Main(QMainWindow):
-  def init(self):
-    #initialize
-    super().init()
+def init(self):
+#initialize
 
     self.setFixedHeight(1000)
     self.setFixedWidth(450)
+    wid = QWidget
+    wid.setGeometry(100,100,300,300)
+    wid.show()
     
     #LED Light setup
-    wid = QWidget
     led = QPushButton(wid)
     led.setText("LED")
+    led.move(64,32)
     led.pressed.connect(led_on)
     led.released.connect(led_off)
 
     #Button Setup
     but = QRadioButton(wid)
     but.setText("button")
-
-    wid.setGeometry(100,100,300,300)
-    wid.show()
+    but.move(64,64)
 
     
 
@@ -46,7 +44,12 @@ class Main(QMainWindow):
     GPIO.add_event_detect(17, GPIO.BOTH)
     GPIO.add_event_callback(17, my_callback)
 
-    sys.exit(app.exec_())
+def led_on():
+   print("Led On")
+   GPIO.output(18, GPIO.HIGH)
+def led_off():
+   print("Led Off")   
+   GPIO.output(18, GPIO.LOW)
 
 
 
@@ -55,6 +58,5 @@ if __name__ == '__main__':
     GPIO.setup(18, GPIO.OUT)
     GPIO.setup(17, GPIO.IN)
     st = QApplication(sys.argv)
-    win = Main()
-    win.show()
+    init()
     st.exec_()
