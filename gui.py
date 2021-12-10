@@ -17,8 +17,8 @@ def main():
 
     # self.setFixedHeight(1000)
     # self.setFixedWidth(450)
-    wid = QWidget()
     st = QApplication(sys.argv)
+    wid = QWidget()
     
     #LED Light setup
     led = QPushButton(wid)
