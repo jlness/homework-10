@@ -70,4 +70,4 @@ if __name__ == '__main__':
     GPIO.setup(17, GPIO.IN)
     st = QApplication(sys.argv)
     init()
-    st.exec_()
+    sys.exit(st.exec_())
