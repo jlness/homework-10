@@ -12,12 +12,12 @@ import RPi.GPIO as GPIO
 # pin = 18
 # GPIO.setup(pin, GPIO.OUT)
 
-def init():
+def main():
 #initialize
 
     # self.setFixedHeight(1000)
     # self.setFixedWidth(450)
-    wid = QWidget
+    wid = QWidget()
     
     #LED Light setup
     led = QPushButton(wid)
@@ -69,5 +69,5 @@ if __name__ == '__main__':
     GPIO.setup(18, GPIO.OUT)
     GPIO.setup(17, GPIO.IN)
     st = QApplication(sys.argv)
-    init()
+    main()
     sys.exit(st.exec_())
