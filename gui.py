@@ -58,10 +58,10 @@ def main():
 
     sys.exit(st.exec_())
 
-# def led_on():
-#    GPIO.output(18, GPIO.HIGH)
-# def led_off():  
-#    GPIO.output(18, GPIO.LOW)
+def led_on():
+   GPIO.output(18, GPIO.HIGH)
+def led_off():  
+   GPIO.output(18, GPIO.LOW)
 
 
 
